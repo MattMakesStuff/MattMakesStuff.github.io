@@ -12,7 +12,7 @@
       } 
       
       function colorChangeHandler(color) {
-        $.get("http://" + rpi + "/?red=" + color.rgb['r'] + "&green=" + color.rgb['g'] + "&blue=" + color.rgb['b']);
+        $.get("https://" + rpi + "/?red=" + color.rgb['r'] + "&green=" + color.rgb['g'] + "&blue=" + color.rgb['b']);
       }
     
       var demo = new iro.ColorPicker("#demoWheel", {
