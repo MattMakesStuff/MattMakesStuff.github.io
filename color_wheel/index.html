@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script src="dist/iro.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <div id="demoWheel" style="padding: 8px; position: absolute; margin: auto; top: 250px;"></div>
+    <script type="text/javascript">
+      var rpi = 'raspberrypi';
+      if(window.location.hash) {
+          rpi = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      } 
+      
+      function colorChangeHandler(color) {
+        $.get("http://" + rpi + "/?red=" + color.rgb['r'] + "&green=" + color.rgb['g'] + "&blue=" + color.rgb['b']);
+      }
+    
+      var demo = new iro.ColorPicker("#demoWheel", {
+        width: $(window).width()-32,
+        height: $(window).height()-266,
+        markerRadius: 8,
+        color: "#f00",
+        borderWidth: 4,
+        padding: 30,
+        css: {
+          body: {
+            "background-color": "$color",
+            "color": "$color"
+          }
+        }
+      });
+      demo.on("color:change", colorChangeHandler)
+      
+    </script>
+  </body>
+</html>
